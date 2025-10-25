@@ -489,4 +489,33 @@ double findShortestDistance(int source,int destination){
 
 }
 
+//File handling functions
+
+void saveRoutesToFile(){
+
+    FILE *f = fopen("routes.txt","w);
+    if(!f){
+        printf("Error saving routes!\n");
+        return;
+    }
+    //Save number of cities
+    fprintf(f,"%d\n",cityCount);
+
+    //Save city name
+    for(int i=0;i<cityCount;i++){
+        fprintf(f, "%s\n",cities[i]);
+    }
+
+    //Save distance matrix
+    for(int i=0;i<cityCount;i++){
+        for(int j=0;j<cityCount;j++){
+            fprintf(f, "%.2f",distanceMatrix[i][j]);
+        }
+        fprintf(f, "\n");
+    }
+    fclose(f);
+
+}
+
+
 
