@@ -540,7 +540,7 @@ void loadRoutesFromFile(){
 
 void saveDeliveriesToFile(){
 
-    FILE *f =fopen("deliveries.txt","r);
+    FILE *f =fopen("deliveries.txt","w");
 
     if(!f)
         return;
@@ -555,6 +555,25 @@ void saveDeliveriesToFile(){
 
     fclose(f);
 
+}
+
+void loadDeliveriesFromFile(){
+
+    FILE *f=fopen("deliveries.txt", "r");
+
+    if(!f)
+        return;
+
+    fscanf(f, "%d\n",&deliveryCount);
+
+    for(int i=0;i<deliveryCount;i++){
+        fscanf(f, "%d %d %d %lf %lf %lf %lf %lf %lf %lf %lf %lf",
+               &deliverySource[i], &deliveryDestination[i], &deliveryVehicleType[i],
+               &deliveryWeight[i], &deliveryDistance[i], &deliveryCost[i],
+               &deliveryFuelUsed[i], &deliveryFuelCost[i], &deliveryTotalCost[i],
+               &deliveryProfit[i], &deliveryCustomerCharge[i], &deliveryEstimatedTime[i]);
+    }
+    fclose(f);
 }
 
 
