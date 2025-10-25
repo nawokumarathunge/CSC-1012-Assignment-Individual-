@@ -70,8 +70,23 @@ double findShortestDistance(int source,int destination);
 
 int main()
 {
+    int i,j;
+    for(i=0;i<MAX_CITIES;i++){
+        for(j=0;j<MAX_CITIES;j++){
+            if(i==j){
+                distanceMatrix[i][j]=0;//Distance from a city to itself
+            }else{
+                distanceMatrix[i][j]=-1;//Distance not set yet
+            }
+        }
+    }
+    loadData(); //Auto load when startup
+    menu();
+    saveData(); //Auto save before exit
+
 
     return 0;
+
 }
 
 //Main menu function
@@ -79,7 +94,8 @@ void menu(){
 
     int choice;
     do{
-        printf("\n==========LOGISTIC MANAGEMENT SYSTEM==========\n\n");
+        printf("============================================================================\n\n");
+        printf("\===========LOGISTIC MANAGEMENT SYSTEM======================================\n\n");
         printf("1. City Management\n");
         printf("2. Distance Management\n");
         printf("3. New Delivery Request\n");
@@ -234,7 +250,7 @@ void distanceManagement(){
             printf("\nEnter source city index:");
             scanf("%d",&a);
 
-            printf("\nEnter Destination city index:");
+            printf("Enter Destination city index:");
             scanf("%d",&b);
 
             if(a==b){
@@ -243,7 +259,7 @@ void distanceManagement(){
             }
             double d;
 
-            printf("\nEnter Distance(km):");
+            printf("Enter Distance(km):");
             scanf("%lf",&d);
 
             distanceMatrix[a][b]=d;
@@ -274,7 +290,7 @@ void newDeliveryRequest(){
     scanf("%d",&src);
 
     printf("Enter Destination city index:");
-    scanf("%d",dest);
+    scanf("%d",&dest);
 
     if(src==dest){
         printf("\nSource and destination must differ.\n");
@@ -291,20 +307,20 @@ void newDeliveryRequest(){
         return;
     }
 
-    printf("\Shortest available route distance:%.2f km\n",dist);
+    printf("Shortest available route distance:%.2f km\n",dist);
 
     double weight;
-    printf("\nEnter weight (kg):");
+    printf("Enter weight (kg):");
     scanf("%lf",&weight);
 
     printf("\nSelect vehicle type:\n");
     for(int i=0;i<NUM_VEHICLES;i++){
-        printf("%d. %s",i+1,vehicleName[i]);
+        printf("%d. %s\n",i+1,vehicleName[i]);
     }
 
     int choice;
 
-    printf("Enter vehicle number:");
+    printf("\nEnter vehicle number:");
     scanf("%d",&choice);
 
     if(choice<1||choice>NUM_VEHICLES){
@@ -344,7 +360,7 @@ void newDeliveryRequest(){
 
     //Print delivery summary
     printf("\n============================================================================\n");
-    printf("\n==========DELIVERY COST ESTIMATION==========\n\n");
+    printf("\n==========DELIVERY COST ESTIMATION==========================================\n\n");
     printf("------------------------------------------------------------------------------\n");
     printf("\nFrom: %s\n",cities[src]);
     printf("To: %s\n",cities[dest]);
@@ -404,7 +420,7 @@ void displayDistanceTable(){
 
     printf("\n=====DISPLAY DISTANCE TABLE=====\n\n");
     for(int i=0;i<cityCount;i++){
-        printf("%10s",cities[i]);
+        printf("%16s",cities[i]);
     }
     printf("\n");
 
@@ -412,9 +428,9 @@ void displayDistanceTable(){
         printf("%-6s",cities[i]);
             for(int j=0;j<cityCount;j++){
                 if(distanceMatrix[i][j]<0)
-                    printf("%10s"."-");
+                    printf("%10s","-");
                 else
-                    printf("%10.2f",distanceMatrix[i][j]);
+                    printf("%12.2f",distanceMatrix[i][j]);
         }
             printf("\n");
     }
@@ -441,7 +457,7 @@ int getRemoveCityIndex(){
 //Calculations
 double calculateDeliveryCost(double D,double R,double W){
 
-    return D*R*(1+(w/10000.0));
+    return D*R*(1+(W/10000.0));
 }
 
 double calculateFuelUsed(double D,double E){
@@ -493,7 +509,7 @@ double findShortestDistance(int source,int destination){
 
 void saveRoutesToFile(){
 
-    FILE *f = fopen("routes.txt","w);
+    FILE *f = fopen("routes.txt","w");
     if(!f){
         printf("Error saving routes!\n");
         return;
@@ -575,5 +591,18 @@ void loadDeliveriesFromFile(){
     }
     fclose(f);
 }
+
+void saveData() {
+    saveRoutesToFile();
+    saveDeliveriesToFile();
+    printf("Data saved to files.\n");
+}
+
+void loadData() {
+    loadRoutesFromFile();
+    loadDeliveriesFromFile();
+    printf("Data loaded (if available).\n");
+}
+
 
 
