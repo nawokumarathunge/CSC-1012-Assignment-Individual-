@@ -130,3 +130,80 @@ void menu(){
 
 }
 
+//City Management
+void cityManagement(){
+
+    int choice;
+
+    do{
+        printf("\n=====CITY MANAGEMENT=====\n\n");
+        printf("1. Add new city.\n");
+        printf("2. Rename city.\n");
+        printf("3. Remove city.\n");
+        printf("4. Display Cities.\n");
+        printf("0. Back\n\n");
+
+        printf("Enter your choice:");
+        scanf("%d",&choice);
+
+        switch(choice){
+
+        case 1:
+            if(cityCount>=MAX_CITIES){
+                printf("City limit reached!\n");
+            }else{
+            printf("Enter City Name:");
+            scanf("%s",cities[cityCount]);
+            cityCount++;
+
+            printf("\nCity Added Successfully.\n");
+
+            }
+            break;
+
+        case 2:
+            displayCities();
+
+            int index=getCityIndex();
+
+            if(index>=0 && index<cityCount){
+
+                printf("Enter new name of the city:");
+                scanf("%s",cities[index]);
+
+                printf("\nCity Renamed Successfully.\n");
+            }else{
+                printf("Invalid Index.\n");
+            }
+            break;
+
+        case 3:
+            displayCities();
+
+            int ind=getCityIndex();
+
+            if(ind>=0 && ind<cityCount){
+                for(int i=ind;i<cityCount-1;i++){
+                    for(int k=0;k<MAX_NAME_LENGTH;k++){
+                        cities[i][k]=cities[i+1][k];
+                    }
+                    for(int j=0;j<cityCount;j++){
+                        distanceMatrix[i][j]=distanceMatrix[i+1][j];
+                        distanceMatrix[j][i]=distanceMatrix[j][i+1];
+                    }
+
+                }
+                cityCount--;
+                printf("\nCity Removed successfully.\n");
+            }
+            break;
+
+        case 4:
+            displayCities();
+            break;
+
+
+
+        }
+    }while(choice!=0);
+}
