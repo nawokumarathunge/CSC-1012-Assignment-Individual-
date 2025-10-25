@@ -454,4 +454,39 @@ double calculateTime(double D,double S){
     return D/S;
 }
 
+double findShortestDistance(int source,int destination){
+
+    double dist[MAX_CITIES];
+    int visited[MAX_CITIES]={0};
+
+    for(int i=0;i<cityCount;i++)
+        dist[i]=INF;
+    dist[source]=0;
+
+    for(int count=0;count,cityCount;count++){
+        int u=-1;
+        double minDist=INF;
+        for(int i=0;i<cityCount;i++){
+            if(!visited[i]  && dist[i]<minDist){
+                minDist=dist[i];
+                u=i;
+            }
+        }
+        if(u == -1)
+            break;
+        visited[u]=1;
+
+        for(int v=0;v<cityCount;v++){
+            if(distanceMatrix[u][v]>0 && !visited[v]){
+                double newDist=dist[u]+distanceMatrix[u][v];
+                if(newDist<dist[v])
+                    dist[v]=newDist;
+            }
+        }
+    }
+
+    return dist[destination];
+
+}
+
 
