@@ -353,6 +353,7 @@ void newDeliveryRequest(){
     deliveryFuelUsed[deliveryCount]=fuelUsed;
     deliveryFuelCost[deliveryCount]=fuelCost;
     deliveryTotalCost[deliveryCount]=operationalCost;
+    deliveryProfit[deliveryCount]=profit;
     deliveryCustomerCharge[deliveryCount]=customerCharge;
     deliveryEstimatedTime[deliveryCount]=time;
 
