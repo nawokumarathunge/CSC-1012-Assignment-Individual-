@@ -341,8 +341,24 @@ void newDeliveryRequest(){
 
     deliveryCount++;
 
-
-
+    //Print delivery summary
+    printf("\n============================================================================\n");
+    printf("\n==========DELIVERY COST ESTIMATION==========\n\n");
+    printf("------------------------------------------------------------------------------\n");
+    printf("\nFrom: %s\n",cities[src]);
+    printf("To: %s\n",cities[dest]);
+    printf("Distance: %.2f km\n",dist);
+    printf("Vehicle: %s\n",vehicleName[v]);
+    printf("Weight: %.2f kg\n",weight);
+    printf("\n-----------------------------------------------------------------------------\n");
+    printf("Base Cost: %.2f LKR\n",cost);
+    printf("Fuel Used: %.2f LKR\n",fuelUsed);
+    printf("Fuel Cost: %.2f LKR\n",fuelCost);
+    printf("Operational Cost: %.2f LKR\n",operationalCost);
+    printf("Profit: %.2f LKR\n",profit);
+    printf("Customer Charge: %.2f LKR\n",customerCharge);
+    printf("Estimated Time: %.2f hours\n",time);
+    printf("\n============================================================================\n");
 
 }
 
