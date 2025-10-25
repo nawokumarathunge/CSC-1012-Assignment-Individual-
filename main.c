@@ -536,6 +536,24 @@ void loadRoutesFromFile(){
     }
 
     fclose(f);
+}
+
+void saveDeliveriesToFile(){
+
+    FILE *f =fopen("deliveries.txt","r);
+
+    if(!f)
+        return;
+    fscanf(f, "%d\n",&deliveryCount);
+
+    for(int i=0;i<deliveryCount;i++){
+        fprintf(f, "%d %d %d %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f\n"
+                ,deliverySource[i],deliveryDestination[i],deliveryVehicleType[i],deliveryWeight[i],
+                deliveryDistance[i],deliveryCost[i],deliveryFuelUsed[i],deliveryFuelCost[i],
+                deliveryTotalCost[i],deliveryProfit[i],deliveryCustomerCharge[i],deliveryEstimatedTime[i]);
+    }
+
+    fclose(f);
 
 }
 
