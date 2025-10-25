@@ -548,7 +548,7 @@ void loadRoutesFromFile(){
 
     for(int i=0;i<cityCount;i++){
         for(int j=0;j<cityCount;j++){
-            fscanf(f, "%lf",distanceMatrix[i][j]);
+            fscanf(f, "%lf",&distanceMatrix[i][j]);
         }
     }
 
@@ -561,7 +561,7 @@ void saveDeliveriesToFile(){
 
     if(!f)
         return;
-    fscanf(f, "%d\n",&deliveryCount);
+    fprintf(f, "%d\n",deliveryCount);
 
     for(int i=0;i<deliveryCount;i++){
         fprintf(f, "%d %d %d %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f\n"
