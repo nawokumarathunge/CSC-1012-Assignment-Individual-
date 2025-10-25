@@ -42,6 +42,30 @@ double vehicleRate[NUM_VEHICLES]={30.0,40.0,80.0};
 double vehicleSpeed[NUM_VEHICLES]={60.0,50.0,45.0};
 double vehicleEfficiency[NUM_VEHICLES]={12.0,6.0,4.0};
 
+//Function Prototypes
+void menu();
+void cityManagement();
+void distanceManagement();
+void newDeliveryRequest();
+void viewReports();
+void saveData();
+void loadData();
+void displayCities();
+void displayDistanceTable();
+int getCityIndex();
+double calculateDeliveryCost(double D,double R,double W);
+double calculateFuelUsed(double D,double E);
+double calculateTime(double D,double S);
+
+//File Handling Functions
+void saveRoutesToFile();
+void loadRoutesFromFile();
+void saveDeliveriesToFile();
+void loadDeliveriesFromFile();
+
+//Shortest root function
+double findShortestDistance(int source,int destination);
+
 
 
 int main()
