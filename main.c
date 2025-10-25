@@ -256,3 +256,69 @@ void distanceManagement(){
         }
     }while(choice!=0);
 }
+
+//New delivery request
+void newDeliveryRequest(){
+
+    if(cityCount<2){
+        printf("\nAdd cities and distance first.\n");
+        return;
+    }
+
+    displayCities();
+
+    int src,dest;
+
+    printf("\nEnter Source city index:");
+    scanf("%d",&src);
+
+    printf("Enter Destination city index:");
+    scanf("%d",dest);
+
+    if(src==dest){
+        printf("\nSource and destination must differ.\n");
+        return;
+
+    }
+
+    //Find shortest route
+
+    double dist = findShortestDistance(src,dest);
+
+    if(dist==INF){
+        printf("No route found between these cities.\n");
+        return;
+    }
+
+    printf("\Shortest available route distance:%.2f km\n",dist);
+
+    double weight;
+    printf("\nEnter weight (kg):");
+    scanf("%lf",&weight);
+
+    printf("\nSelect vehicle type:\n");
+    for(int i=0;i<NUM_VEHICLES;i++){
+        printf("%d. %s",i+1,vehicleName[i]);
+    }
+
+    int choice;
+
+    printf("Enter vehicle number:");
+    scanf("%d",&choice);
+
+    if(choice<1||choice>NUM_VEHICLES){
+        printf("Invalid vehicle.\n");
+        return;
+
+    }
+    int v=choice-1;
+
+    if(weight>vehicleCapacity[v]){
+        printf("Weight exceeds vehicle capacity!\n");
+        return;
+    }
+
+
+
+}
+
