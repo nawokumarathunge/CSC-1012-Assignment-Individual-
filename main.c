@@ -392,10 +392,32 @@ void viewReports(){
 
 void displayCities(){
 
-    printf("\n-----CITIES-----\n\n");
+    printf("\n=====CITIES=====\n\n");
     for(int i=0;i<cityCount;i++){
         printf("%d. %s\n",i,cities[i]);
     }
 
 }
+
+void displayDistanceTable(){
+
+    printf("\n=====DISPLAY DISTANCE TABLE=====\n\n");
+    for(int i=0;i<cityCount;i++){
+        printf("%10s",cities[i]);
+    }
+    printf("\n");
+
+    for(int i=0;i<cityCount;i++){
+        printf("%-6s",cities[i]);
+            for(int j=0;j<cityCount;j++){
+                if(distanceMatrix[i][j]<0)
+                    printf("%10s"."-");
+                else
+                    printf("%10.2f",distanceMatrix[i][j]);
+        }
+            printf("\n");
+    }
+}
+
+
 
