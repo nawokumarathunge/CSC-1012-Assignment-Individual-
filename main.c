@@ -67,9 +67,66 @@ void loadDeliveriesFromFile();
 double findShortestDistance(int source,int destination);
 
 
-
 int main()
 {
 
     return 0;
 }
+
+//Main menu function
+void menu(){
+
+    int choice;
+    do{
+        printf("\n==========LOGISTIC MANAGEMENT SYSTEM==========\n\n");
+        printf("1. City Management\n");
+        printf("2. Distance Management\n");
+        printf("3. New Delivery Request\n");
+        printf("4. View Reports\n");
+        printf("5. Save Data to Files\n");
+        printf("6. Load Data from Files\n");
+        printf("0. Exit\n\n");
+
+        printf("Enter your choice:");
+        scanf("%d",&choice);
+
+        switch(choice){
+
+        case 1:
+            cityManagement();
+            break;
+
+        case 2:
+            distanceManagement();
+            break;
+
+        case 3:
+            newDeliveryRequest();
+            break;
+
+        case 4:
+            viewReports();
+            break;
+
+        case 5:
+            saveData();
+            break;
+
+        case 6:
+            loadData();
+            break;
+
+        case 0:
+            printf("Exit! Thank you for choosing LOGIC MANAGEMENT SYSTEM.\n");
+            break;
+
+        default:
+            printf("Invalid choice.\n");
+
+
+        }
+
+    }while(choice!=0);
+
+}
+
