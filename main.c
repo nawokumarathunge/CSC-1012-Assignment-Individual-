@@ -207,3 +207,52 @@ void cityManagement(){
         }
     }while(choice!=0);
 }
+
+//Distance Management
+void distanceManagement(){
+
+    int choice;
+    do{
+        printf("\n=====DISTANCE MANAGEMENT=====\n\n");
+        printf("1. Enter/Edit Distance.\n");
+        printf("2. Display Distance Table.\n");
+        printf("0. Back\n");
+
+        printf("\nEnter your choice:");
+        scanf("%d",&choice);
+
+        if(choice==1){
+            if(cityCount<2){
+                printf("\nAdd at least two cities first.\n");
+
+            }
+            displayCities();
+
+            int a,b;
+
+            printf("\nEnter source city index:");
+            scanf("%d",&a);
+
+            printf("\nEnter Destination city index:");
+            scanf("%d",&b);
+
+            if(a==b){
+                printf("\nDistance from city to itself = 0.\n");
+
+            }
+            double d;
+
+            printf("\nEnter Distance(km):");
+            scanf("%lf",&d);
+
+            distanceMatrix[a][b]=d;
+            distanceMatrix[b][a]=d;
+
+            printf("\nDistance Updated.\n");
+
+
+        }else if(choice==2){
+            displayDistanceTable();
+        }
+    }while(choice!=0);
+}
