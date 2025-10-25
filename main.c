@@ -52,7 +52,8 @@ void saveData();
 void loadData();
 void displayCities();
 void displayDistanceTable();
-int getCityIndex();
+int getRenameCityIndex();
+int getRemoveCityIndex();
 double calculateDeliveryCost(double D,double R,double W);
 double calculateFuelUsed(double D,double E);
 double calculateTime(double D,double S);
@@ -164,7 +165,7 @@ void cityManagement(){
         case 2:
             displayCities();
 
-            int index=getCityIndex();
+            int index=getRenameCityIndex();
 
             if(index>=0 && index<cityCount){
 
@@ -180,7 +181,7 @@ void cityManagement(){
         case 3:
             displayCities();
 
-            int ind=getCityIndex();
+            int ind=getRemoveCityIndex();
 
             if(ind>=0 && ind<cityCount){
                 for(int i=ind;i<cityCount-1;i++){
@@ -417,6 +418,24 @@ void displayDistanceTable(){
         }
             printf("\n");
     }
+}
+
+int getRenameCityIndex(){
+    int index;
+
+    printf("Enter city index to rename:");
+    scanf("%d",&index);
+    return index;
+
+}
+
+int getRemoveCityIndex(){
+    int index;
+
+    printf("Enter city index to remove:");
+    scanf("%d",&index);
+    return index;
+
 }
 
 
