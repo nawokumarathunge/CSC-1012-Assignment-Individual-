@@ -438,5 +438,20 @@ int getRemoveCityIndex(){
 
 }
 
+//Calculations
+double calculateDeliveryCost(double D,double R,double W){
+
+    return D*R*(1+(w/10000.0));
+}
+
+double calculateFuelUsed(double D,double E){
+
+    return D/E;
+}
+
+double calculateTime(double D,double S){
+
+    return D/S;
+}
 
 
