@@ -390,3 +390,12 @@ void viewReports(){
 
 }
 
+void displayCities(){
+
+    printf("\n-----CITIES-----\n\n");
+    for(int i=0;i<cityCount;i++){
+        printf("%d. %s\n",i,cities[i]);
+    }
+
+}
+
