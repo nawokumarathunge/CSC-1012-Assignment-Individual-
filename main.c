@@ -318,6 +318,30 @@ void newDeliveryRequest(){
         return;
     }
 
+    //Calculation
+    double cost=calculateDeliveryCost(dist,vehicleRate[v],weight);
+    double fuelUsed=calculateFuelUsed(dist,vehicleEfficiency[v]);
+    double fuelCost=fuelUsed*FUEL_PRICE;
+    double operationalCost=cost+fuelCost;
+    double profit=cost*0.25;
+    double customerCharge=operationalCost+profit;
+    double time=calculateTime(dist,vehicleSpeed[v]);
+
+    deliverySource[deliveryCount]=src;
+    deliveryDestination[deliveryCount]=dest;
+    deliveryVehicleType[deliveryCount]=v;
+    deliveryWeight[deliveryCount]=weight;
+    deliveryDistance[deliveryCount]=dist;
+    deliveryCost[deliveryCount]=cost;
+    deliveryFuelUsed[deliveryCount]=fuelUsed;
+    deliveryFuelCost[deliveryCount]=fuelCost;
+    deliveryTotalCost[deliveryCount]=operationalCost;
+    deliveryCustomerCharge[deliveryCount]=customerCharge;
+    deliveryEstimatedTime[deliveryCount]=time;
+
+    deliveryCount++;
+
+
 
 
 }
